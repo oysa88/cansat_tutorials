@@ -51,8 +51,9 @@ Bruk en ``||basic: pause||`` for å si hvor lenge lyset skal være PÅ og AV.
 ```blocks
 basic.forever(function () {
     pins.digitalWritePin(DigitalPin.P0, 1)
-    basic.pause(5000)
+    basic.pause(500)
     pins.digitalWritePin(DigitalPin.P0, 0)
+    basic.pause(500)
 }
 ```
 
