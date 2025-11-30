@@ -5,14 +5,17 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "BMP280": "github:makecode-extensions/bmp280#v1.1.0",
+        "pxt-kitronik-128x64display": "github:kitronikltd/pxt-kitronik-128x64display#v0.4.1"
     },
     "files": [
         "main.blocks",
         "main.ts",
         "README.md",
         "oving_tutorial.md",
-        "tutorial-info-cache.json"
+        "tutorial-info-cache.json",
+        "_locales/nb/oving_tutorial.md"
     ],
     "testFiles": [
         "test.ts"
