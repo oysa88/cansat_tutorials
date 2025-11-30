@@ -65,7 +65,7 @@ basic.forever(function () {
 
 Start med å lage funksjonen ``||functions: nedtelling||``:
 
-For å kunne telle nedover, trenger vi en variabel som kan huske tallet vår. Lag en ny variabel: ``||variables: teller ||``, og sett den inn i ``||functions: nedtelling||``.
+For å kunne telle nedover, trenger vi en variabel som kan huske tallet vår. Lag en ny variabel: ``||variables: teller ||``, sett den til 10 inni ``||functions: nedtelling||``.
 
 Siden vi skal telle ned fra 10 til 0, bruker vi en ``||loops: FOR-løkke ||`` som lar og gjenta løkken akkurat så mange ganger vi ønsker. 
 
@@ -73,7 +73,7 @@ Sett ``||loops: gjenta for indeks ||`` til å kjøres **fra 0 til 10**.
 
 Inni ``||loops: FOR-løkke ||`` skal vi bruke en ``||basic: vis tall ||`` til å vise ``||variables: teller ||``. Og for hver gang den har vist tallet, ``||variables: endre teller med -1 ||``.
 
-Husk å kalle opp ``||functions: nedtelling||`` fra ``||basic: ved start||``.
+Husk å kjøre ``||functions: nedtelling||`` fra ``||basic: ved start||``.
 
 ```blocks
 function nedtelling () {
