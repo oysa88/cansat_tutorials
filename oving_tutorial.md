@@ -643,7 +643,11 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-
+    BMP280.temperature()
+    BMP280.pressure()
+    BMP280.PowerOn()
+    BMP280.PowerOff()
+    BMP280.Address(BMP280_I2C_ADDRESS.ADDR_0x76)
 })
 function doSomething() {
 
