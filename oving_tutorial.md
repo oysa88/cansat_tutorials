@@ -468,7 +468,6 @@ Hvor:
 - **p1:** Trykk i Pa ved referansehøyden h1
 - **g0:** Tyngdeakselerasjonen 9,81 m/s^2
 
-
 <!-- Del 7.1: -->
 
 ### Oppgave 7: Lage formelen for å beregne høyden til CanSat
