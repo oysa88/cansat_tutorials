@@ -3,7 +3,7 @@
 ### @diffs true
 ### @unifiedToolbox true
 
-## Del 1: @unplugged
+<!-- Del 1: -->
 
 ### CanSat Øvingsoppgaver @unplugged
 
@@ -11,29 +11,37 @@ I denne veiledningen skal vi gå gjennom grunnleggende funksjoner som dere får 
 
 **Oppgaver dere skal løse er: **
 
-- **1)** Få et LED-lys til å blinke ved koble det til pins på micro:betingelse
-- **2)** Lage en teller som teller fra 10 til 0, og som skrur på LED-lyset i 5 sekunder.
-- **3)** Bruke en OLED-skjerm, og vise nedtellingen på skjermen.
-- **4)** Lege et voltmeter som skriver spenningen til OLED-skjermen.
-- **5)** Lese analogverdi fra en TMP36 (Temperatursensor) og konvertere disse til termometerer vi viser på OLED-skjermen.
-- **6)** Koble til en BMP280 sensor, les av lufttrykk og skriv det på OLED-skjerm.
-- **7)** Regne om barometrisk lufttrykk til relativ høyde på CanSat.
+**1)** Få et LED-lys til å blinke ved koble det til pins på micro:bit
 
-Lykke til!
+**2)** Lage en teller som teller fra 10 til 0, og så skrur på LED-lyset i 5 sekunder.
+
+**3)** Bruke en OLED-skjerm, og vise nedtellingen på skjermen.
+
+**4)** Lage et voltmeter som skriver spenningen til OLED-skjermen.
+
+**5)** Lese analogverdi fra en TMP36 (Temperatursensor) og konvertere disse til temperatur vi viser på OLED-skjermen.
+
+**6)** Koble til en BMP280 sensor, les av lufttrykk og skriv det på OLED-skjerm.
+
+**7)** Regne om barometrisk lufttrykk til relativ høyde på CanSat.
+
+**8)** Sende data mellom 2 micro:bit og lagre de i en datalogger
+
+#### **Lykke til!**
 
 
-## Del 1.1: @unplugged
+<!-- Del 1.1: -->
 
-### Oppgave 1 - Koble LED-lys til CanSat
+### Oppgave 1 - Koble LED-lys til CanSat @unplugged
 
 Koble opp kretsen som vist på bildet under.
 
-NB: Koble pluss på LED til ingangen P0 og minus til jord (GND).
+NB: Koble pluss på LED til inngangen P0 og minus til jord (GND).
 
 ![microbit-ovelse-1-LED.jpg](https://i.postimg.cc/wBXCyNSs/microbit-ovelse-1-LED.jpg)
 
 
-## Del 1.2:
+<!-- Del 1.2: -->
 
 ### Oppgave 1: Få LED-lyset til å skru seg AV og PÅ én gang hvert sekund.
 
@@ -57,7 +65,7 @@ basic.forever(function () {
 }
 ```
 
-## Del 2.1:
+<!-- Del 2.1: -->
 
 ### Oppgave 2: Telle fra 10 til 0
 
@@ -65,15 +73,15 @@ basic.forever(function () {
 
 Start med å lage funksjonen ``||functions: nedtelling||``:
 
-For å kunne telle nedover, trenger vi en variabel som kan huske tallet vår. Lag en ny variabel: ``||variables: teller ||``, sett den til 10 inni ``||functions: nedtelling||``.
+For å kunne telle nedover, trenger vi en variabel som kan huske tallet vår. Variabler er noe vi bruker for å at koden vår skal kunne *huske* verdiene vi jobber med. Lag en ny variabel: ``||variables: teller ||``. Plasser blokken ``||variables: sett teller til 10 ||`` inni ``||functions: nedtelling||``.
 
-Siden vi skal telle ned fra 10 til 0, bruker vi en ``||loops: FOR-løkke ||`` som lar og gjenta løkken akkurat så mange ganger vi ønsker. 
+Siden vi skal telle ned fra 10 til 0, bruker vi en ``||loops: FOR-løkke ||`` som lar oss gjenta løkken akkurat så mange ganger vi ønsker. 
 
 Sett ``||loops: gjenta for indeks ||`` til å kjøres **fra 0 til 10**.
 
-Inni ``||loops: FOR-løkke ||`` skal vi bruke en ``||basic: vis tall ||`` til å vise ``||variables: teller ||``. Og for hver gang den har vist tallet, ``||variables: endre teller med -1 ||``.
+Inni ``||loops: gjenta for indeks ||`` skal vi bruke en ``||basic: vis tall ||`` til å vise ``||variables: teller ||``. Og for hver gang den har vist tallet, ``||variables: endre teller med -1 ||``.
 
-Husk å kjøre ``||functions: nedtelling||`` fra ``||basic: ved start||``.
+Husk å kjøre ``||functions: nedtelling||`` fra ``||basic: ved start||``. Denne blokken brukes for å si nåt funskjonen skal kjøres.
 
 ```blocks
 function nedtelling () {
@@ -87,11 +95,13 @@ let teller = 0
 nedtelling()
 ```
 
-## Del 2.2:
+<!-- Del 2.2: -->
 
 ### Oppgave 2: Få LED-lys til å lyse i 5 sek.
 
-Bruk de samme blokkene fra oppgave 1 for å skru på LED i 5 sekunder. Endre ``||basic: pause ||`` LED PÅ og AV til 5000 ms.
+For å få LED til å lyse i 5 sek, kan vi flytte blokkene vi har i ``||basic: gjenta for alltid ||``, over til ``||functions: nedtelling ||``. 
+
+Endre ``||basic: pause ||``  mellom LED PÅ og AV til 5000 ms. *(Fjern ``||basic: pause ||`` etter ``||pins: skriv digital P0 til 0||``.)*
 
 ```blocks
 function nedtelling () {
@@ -108,7 +118,7 @@ let teller = 0
 nedtelling()
 ```
 
-## Del 2.3:
+<!-- Del 2.3: -->
 
 ### Bestemme når nedtelling av starte
 
@@ -134,9 +144,9 @@ let teller = 0
 nedtelling()
 ```
 
-## Del 3: @unplugged
+<!-- Del 3: -->
 
-### Oppgave 3: Skriv til OLED-skjerm
+### Oppgave 3: Skriv til OLED-skjerm @unplugged
 
 Nå skal vi se på hvordan vi kan bruke en Kitronik OLED-skjerm for å bedre vise dataene våre. 
 
@@ -145,7 +155,7 @@ Skjermen skal kobles til mellom CanSat og micro:bit.
 ![Kitronik OLED-skjerm](https://www.lekolar.no/globalassets/inriver/resources/133848_118895.jpg)
 
 
-## Del 3.1:
+<!-- Del 3.1: -->
 
 ### Oppgave 3: Sette opp OLED-skjerm
 
@@ -159,7 +169,7 @@ kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Big)
 ```
 
 
-## Del 3.2: 
+<!-- Del 3.2: -->
 
 ### Oppgave 3: Vise nedtelling på OLED-skjermen
 
@@ -192,14 +202,14 @@ nedtelling()
 ```
 
 
-## Del 4 @unplugged
+<!-- Del 4: -->
 
-### Oppgave 4: Lage et voltmeter
+### Oppgave 4: Lage et voltmeter @unplugged
 
 Alle sensorene vi skal koble til CanSat'en bruker spenningsverdien vi får fra sensoren for å regne ut den faktiske verdien vår. Vi må derfor lære hvordan man konverterer den analog verdi vi får inn på micro:biten til en spenningsverdien.
 
 
-## Del 4.1
+<!-- Del 4.1: -->
 
 ### Oppgave 4: Lagre analog verdi på micro:biten
 
@@ -213,7 +223,7 @@ function voltmeter () {
     analogVerdi = pins.analogReadPin(AnalogPin.P0)
 ```
 
-## Del 4.2
+<!-- Del 4.2: -->
 
 ### Oppgave 4: Vise analog verdi på OLED-skjermen
 
@@ -237,7 +247,7 @@ function voltmeter () {
 ```
 
 
-## Del 4.3
+<!-- Del 4.3: -->
 
 ### Oppgave 4: Bestemme verdi på Uref
 
@@ -247,7 +257,7 @@ Lage en ny variabel: ``||variables: Uref||``.
 
 Se tabell under for hva ``||variables: Uref||`` skal være :
 
-|   **Spenning fra USB**   |   **Spenning fra batteri**   |
+|   **  Spenning fra USB  **   |   **  Spenning fra batteri  **   |
 | :------------: | :------------: |
 | 3.2 | 3.0 |
 
@@ -257,7 +267,7 @@ Uref = 3.2
 ```
 
 
-## Del 4.4
+<!-- Del 4.4: -->
 
 ### Oppgave 4: Beregne spenning fra analog verdi
 
@@ -276,7 +286,7 @@ function voltmeter () {
 ```
 
 
-## Del 4.5
+<!-- Del 4.5: -->
 
 ### Oppgave 4: Vis spenningsverdi på OLED-skjerm
 
@@ -305,7 +315,7 @@ kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Normal)
 ```
 
 
-## Del 4.6
+<!-- Del 4.6: -->
 
 ### Oppgave 4: Runde av spenningsverdi
 
@@ -327,9 +337,9 @@ function voltmeter () {
 ```
 
 
-## Del 5 @unplugged
+<!-- Del 5: -->
 
-### Oppgave 5: Lage et termometer med TMP36
+### Oppgave 5: Lage et termometer med TMP36 @unplugged
 
 I denne oppgaven skal vi finne temperaturen fra en TMP36 temperatursensor. 
 
@@ -338,7 +348,7 @@ Koble opp kretsen på bildet under:
 ![Oppgave-5-TMP36-Oppkobling.png](https://i.postimg.cc/g2RTLYvL/Oppgave-5-TMP36-Oppkobling.png)
 
 
-## Del 5.1
+<!-- Del 5.1: -->
 
 ### Oppgave 5: Regne om spenningsverdi til temperatur
 
@@ -354,7 +364,7 @@ function termometer () {
 }
 ```
 
-## Del 5.2
+<!-- Del 5.2: -->
 
 ### Oppgave 5: Vise termometer på OLED-skjerm
 
@@ -383,9 +393,9 @@ function voltmeter () {
 }
 ```
 
-## Del 6 @unplugged
+<!-- Del 6: -->
 
-### Oppgave 6: Lag et barometer
+### Oppgave 6: Lag et barometer @unplugged
 
 Vi skal bruke en ``||BMP280: BMP280||`` sensor. Denne sensoren kan måle:
 
@@ -397,8 +407,7 @@ Vi skal bruke en ``||BMP280: BMP280||`` sensor. Denne sensoren kan måle:
 For å lage et barometer skal vi bruke ``||BMP280: trykk||``.
 
 
-
-## Del 6.1
+<!-- Del 6.1: -->
 
 ### Oppgave 6: Koble opp og lese av fra BMP280
 
@@ -422,7 +431,7 @@ function BMP280_sensor () {
 }
 ```
 
-## Del 6.2
+<!-- Del 6.2: -->
 
 ### Oppgave 6: Skrive lufttrykk på OLED-skjerm
 
@@ -442,9 +451,9 @@ function barometer () {
 }
 ```
 
-## Del 7 @unplugged
+<!-- Del 7: -->
 
-### Oppgave 7: Formel for å regne om barometrisk lufttrykk til relativ høyde på CanSat
+### Oppgave 7: Formel for å regne om barometrisk lufttrykk til relativ høyde på CanSat @unplugged
 
 ![Regne-ut-hoyde-i-forhold-til-trykk.png](https://i.postimg.cc/Lst1zpZS/Regne-ut-hoyde-i-forhold-til-trykk.png)
 
@@ -460,7 +469,7 @@ Hvor:
 - **g0:** Tyngdeakselerasjonen 9,81 m/s^2
 
 
-## Del 7.1
+<!-- Del 7.1: -->
 
 ### Oppgave 7: Lage formelen for å beregne høyden til CanSat
 
@@ -483,7 +492,7 @@ function høyde () {
 ```
 
 
-## Del 7.2
+<!-- Del 7.2: -->
 
 ### Oppgave 7: Vise høyden til CanSat på OLED-skjerm
 
@@ -507,7 +516,16 @@ function høyde () {
 }
 ```
 
-## Del 8
+
+<!-- Del 8: -->
+
+### Sende og lagre data mellom 2 micro:bit
+
+
+
+
+
+<!-- Del 9: -->
 
 ### Ferdig! 
 
