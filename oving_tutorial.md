@@ -397,7 +397,11 @@ function voltmeter () {
 
 ## Oppgave 6: Lag et barometer @unplugged
 
-Vi skal bruke en ``||BMP280: BMP280||`` sensor. Denne sensoren kan måle:
+#### Vi skal bruke en ``||BMP280: BMP280||`` sensor. 
+
+![BME280.png](https://i.postimg.cc/ZYjVtVRH/BME280.png)
+
+Denne sensoren kan måle:
 
 - Temperatur
 - Trykk
