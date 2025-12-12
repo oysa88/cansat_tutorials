@@ -5,7 +5,7 @@
 
 <!-- Del 1: -->
 
-### CanSat Øvingsoppgaver @unplugged
+## CanSat Øvingsoppgaver @unplugged
 
 I denne veiledningen skal vi gå gjennom grunnleggende funksjoner som dere får bruk for når dere skal programmere en CanSat. 
 
@@ -32,7 +32,7 @@ I denne veiledningen skal vi gå gjennom grunnleggende funksjoner som dere får 
 
 <!-- Del 1.1: -->
 
-### Oppgave 1 - Koble LED-lys til CanSat @unplugged
+## Oppgave 1 - Koble LED-lys til CanSat @unplugged
 
 Koble opp kretsen som vist på bildet under.
 
@@ -43,7 +43,7 @@ NB: Koble pluss på LED til inngangen P0 og minus til jord (GND).
 
 <!-- Del 1.2: -->
 
-### Oppgave 1: Få LED-lyset til å skru seg AV og PÅ én gang hvert sekund.
+## Oppgave 1: Få LED-lyset til å skru seg AV og PÅ én gang hvert sekund.
 
 Inni ``||basic: gjenta for alltid||``:
 
@@ -67,7 +67,7 @@ basic.forever(function () {
 
 <!-- Del 2.1: -->
 
-### Oppgave 2: Telle fra 10 til 0
+## Oppgave 2: Telle fra 10 til 0
 
 **Når man skal lage store koder, er det vanlig å bruke ``||functions: funksjoner||``. Inni funksjonen bygger vi koden for det vi vil den skal utføre, og så kaller vi den opp når vi trenger den.**
 
@@ -97,7 +97,7 @@ nedtelling()
 
 <!-- Del 2.2: -->
 
-### Oppgave 2: Få LED-lys til å lyse i 5 sek.
+## Oppgave 2: Få LED-lys til å lyse i 5 sek.
 
 For å få LED til å lyse i 5 sek, kan vi flytte blokkene vi har i ``||basic: gjenta for alltid ||``, over til ``||functions: nedtelling ||``. 
 
@@ -120,7 +120,7 @@ nedtelling()
 
 <!-- Del 2.3: -->
 
-### Bestemme når nedtelling av starte
+## Bestemme når nedtelling av starte
 
 ``||functions: Funksjonen nedtelling||`` lar kjører når vi starter micro:biten. Hvis vi vil at den skal kjøres på nytt, kan vi f.eks. kalle den opp når vi ``||input: trykker på knapp A||``.
 
@@ -146,7 +146,7 @@ nedtelling()
 
 <!-- Del 3: -->
 
-### Oppgave 3: Skriv til OLED-skjerm @unplugged
+## Oppgave 3: Skriv til OLED-skjerm @unplugged
 
 Nå skal vi se på hvordan vi kan bruke en Kitronik OLED-skjerm for å bedre vise dataene våre. 
 
@@ -157,7 +157,7 @@ Skjermen skal kobles til mellom CanSat og micro:bit.
 
 <!-- Del 3.1: -->
 
-### Oppgave 3: Sette opp OLED-skjerm
+## Oppgave 3: Sette opp OLED-skjerm
 
 Fra biblioteket ``||kitronik_VIEW128x64: 128x64 Display||``, hent blokkene ``||kitronik_VIEW128x64: turn AV display||`` og ``||kitronik_VIEW128x64: Set font size to Normal||``. 
 
@@ -171,7 +171,7 @@ kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Big)
 
 <!-- Del 3.2: -->
 
-### Oppgave 3: Vise nedtelling på OLED-skjermen
+## Oppgave 3: Vise nedtelling på OLED-skjermen
 
 Fjern ``||basic: vis tall||`` ``||variables: teller||`` fra ``||functions: nedtelling||``. 
 
@@ -204,14 +204,14 @@ nedtelling()
 
 <!-- Del 4: -->
 
-### Oppgave 4: Lage et voltmeter @unplugged
+## Oppgave 4: Lage et voltmeter @unplugged
 
 Alle sensorene vi skal koble til CanSat'en bruker spenningsverdien vi får fra sensoren for å regne ut den faktiske verdien vår. Vi må derfor lære hvordan man konverterer den analog verdi vi får inn på micro:biten til en spenningsverdien.
 
 
 <!-- Del 4.1: -->
 
-### Oppgave 4: Lagre analog verdi på micro:biten
+## Oppgave 4: Lagre analog verdi på micro:biten
 
 Start med å lage en ny funksjon: ``||functions: voltmeter||``.
 
@@ -225,7 +225,7 @@ function voltmeter () {
 
 <!-- Del 4.2: -->
 
-### Oppgave 4: Vise analog verdi på OLED-skjermen
+## Oppgave 4: Vise analog verdi på OLED-skjermen
 
 Inni funksjonen ``||functions: voltmeter||`` skal vi vise den analoge verdien vi får fra P0. 
 
@@ -249,7 +249,7 @@ function voltmeter () {
 
 <!-- Del 4.3: -->
 
-### Oppgave 4: Bestemme verdi på Uref
+## Oppgave 4: Bestemme verdi på Uref
 
 Lage en ny variabel: ``||variables: Uref||``.
 
@@ -269,7 +269,7 @@ Uref = 3.2
 
 <!-- Del 4.4: -->
 
-### Oppgave 4: Beregne spenning fra analog verdi
+## Oppgave 4: Beregne spenning fra analog verdi
 
 Lage en ny variabel: ``||variables: spenning||``.
 
@@ -288,7 +288,7 @@ function voltmeter () {
 
 <!-- Del 4.5: -->
 
-### Oppgave 4: Vis spenningsverdi på OLED-skjerm
+## Oppgave 4: Vis spenningsverdi på OLED-skjerm
 
 Vi skal gjøre det samme som vi gjorde for å vise den analoge verdien på OLED-skjermen:
 
@@ -317,7 +317,7 @@ kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Normal)
 
 <!-- Del 4.6: -->
 
-### Oppgave 4: Runde av spenningsverdi
+## Oppgave 4: Runde av spenningsverdi
 
 Når du testet koden din, så du kanskje at du fikk veldig mange desimaler. Vi kan ikke direkte skrive at vi kun ønsker 2 desimaler. Det vi må gjøre er å gange verdien vi har fått med 100, ``||math: avrund ||`` den nye verdien vår, før vi deler den på 100. Endre ``||math: avrund ||`` til ``||math: avkorte ||``.
 
@@ -339,7 +339,7 @@ function voltmeter () {
 
 <!-- Del 5: -->
 
-### Oppgave 5: Lage et termometer med TMP36 @unplugged
+## Oppgave 5: Lage et termometer med TMP36 @unplugged
 
 I denne oppgaven skal vi finne temperaturen fra en TMP36 temperatursensor. 
 
@@ -350,7 +350,7 @@ Koble opp kretsen på bildet under:
 
 <!-- Del 5.1: -->
 
-### Oppgave 5: Regne om spenningsverdi til temperatur
+## Oppgave 5: Regne om spenningsverdi til temperatur
 
 Vi skal lage en ny funksjon: ``||functions: termometer||``.
 
@@ -366,7 +366,7 @@ function termometer () {
 
 <!-- Del 5.2: -->
 
-### Oppgave 5: Vise termometer på OLED-skjerm
+## Oppgave 5: Vise termometer på OLED-skjerm
 
  Plasser en ``||text: sett sammen ||`` inni en ny ``||kitronik_VIEW128x64: show ||``. Utvid blokken og endre til å skrive på linje 3.
 
@@ -395,7 +395,7 @@ function voltmeter () {
 
 <!-- Del 6: -->
 
-### Oppgave 6: Lag et barometer @unplugged
+## Oppgave 6: Lag et barometer @unplugged
 
 Vi skal bruke en ``||BMP280: BMP280||`` sensor. Denne sensoren kan måle:
 
@@ -409,7 +409,7 @@ For å lage et barometer skal vi bruke ``||BMP280: trykk||``.
 
 <!-- Del 6.1: -->
 
-### Oppgave 6: Koble opp og lese av fra BMP280
+## Oppgave 6: Koble opp og lese av fra BMP280
 
 For å få BMP280 til å snakke med CanSat, skal vi sette opp to blokken inn i ``||basic: ved start||`` fra biblioteket ``||BMP280: BMP280||``:
 
@@ -433,7 +433,7 @@ function BMP280_sensor () {
 
 <!-- Del 6.2: -->
 
-### Oppgave 6: Skrive lufttrykk på OLED-skjerm
+## Oppgave 6: Skrive lufttrykk på OLED-skjerm
 
 Kopier koden vi har brukt før for å skrive til OLED-skjerm.
 
@@ -453,7 +453,7 @@ function barometer () {
 
 <!-- Del 7: -->
 
-### Oppgave 7: Formel for å regne om barometrisk lufttrykk til relativ høyde på CanSat @unplugged
+## Oppgave 7: Formel for å regne om barometrisk lufttrykk til relativ høyde på CanSat @unplugged
 
 ![Regne-ut-hoyde-i-forhold-til-trykk.png](https://i.postimg.cc/Lst1zpZS/Regne-ut-hoyde-i-forhold-til-trykk.png)
 
@@ -470,7 +470,7 @@ Hvor:
 
 <!-- Del 7.1: -->
 
-### Oppgave 7: Lage formelen for å beregne høyden til CanSat
+## Oppgave 7: Lage formelen for å beregne høyden til CanSat
 
 Vi skal lage en ny funksjon: ``||functions: høyde||``. Plasser den eneste blokken fra blokken fra ``||barometric-height: Høydeberegning||``.
 
@@ -493,7 +493,7 @@ function høyde () {
 
 <!-- Del 7.2: -->
 
-### Oppgave 7: Vise høyden til CanSat på OLED-skjerm
+## Oppgave 7: Vise høyden til CanSat på OLED-skjerm
 
 Kopier koden vi har brukt før for å skrive til OLED-skjerm.
 
@@ -518,7 +518,7 @@ function høyde () {
 
 <!-- Del 8: -->
 
-### Sende og lagre data mellom 2 micro:bit
+## Sende og lagre data mellom 2 micro:bit
 
 
 
@@ -526,7 +526,7 @@ function høyde () {
 
 <!-- Del 9: -->
 
-### Ferdig! 
+## Ferdig! 
 
 Gratulerer! Du har nå løst alle oppgavene du trenger for å kunne programmere en fullstendig versjon av CanSat med bruk av micro:bit!
 
