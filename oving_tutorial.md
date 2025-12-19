@@ -120,9 +120,9 @@ nedtelling()
 
 <!-- Del 2.3: -->
 
-## Bestemme når nedtelling av starte
+## Bestemme når nedtelling skal starte
 
-``||functions: Funksjonen nedtelling||`` lar kjører når vi starter micro:biten. Hvis vi vil at den skal kjøres på nytt, kan vi f.eks. kalle den opp når vi ``||input: trykker på knapp A||``.
+``||functions: Funksjonen nedtelling||`` kjører når vi starter micro:biten. Hvis vi vil at den skal kjøres på nytt, kan vi f.eks. kalle den opp når vi ``||input: trykker på knapp A||``.
 
 
 
