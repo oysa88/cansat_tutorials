@@ -38,7 +38,7 @@ Koble opp kretsen som vist på bildet under.
 
 NB: Koble pluss på LED til inngangen P0 og minus til jord (GND).
 
-![microbit-ovelse-1-LED.jpg](https://i.postimg.cc/wBXCyNSs/microbit-ovelse-1-LED.jpg)
+![microbit_øvelse_1_LED_liten.jpg](https://i.postimg.cc/KYqc9mtM/microbit_øvelse_1_LED_liten.jpg)
 
 
 <!-- Del 1.2: -->
@@ -81,7 +81,7 @@ Sett ``||loops: gjenta for indeks ||`` til å kjøres **fra 0 til 10**.
 
 Inni ``||loops: gjenta for indeks ||`` skal vi bruke en ``||basic: vis tall ||`` til å vise ``||variables: teller ||``. Og for hver gang den har vist tallet, ``||variables: endre teller med -1 ||``.
 
-Husk å kjøre ``||functions: nedtelling||`` fra ``||basic: ved start||``. Denne blokken brukes for å si nåt funskjonen skal kjøres.
+Husk å kjøre ``||functions: nedtelling||`` fra ``||basic: ved start||``. Denne blokken brukes for å si når funksjonen skal kjøres.
 
 ```blocks
 function nedtelling () {
@@ -120,11 +120,9 @@ nedtelling()
 
 <!-- Del 2.3: -->
 
-## Bestemme når nedtelling skal starte
+## Oppgave 2: Bestemme når nedtelling skal starte
 
 ``||functions: Funksjonen nedtelling||`` kjører når vi starter micro:biten. Hvis vi vil at den skal kjøres på nytt, kan vi f.eks. kalle den opp når vi ``||input: trykker på knapp A||``.
-
-
 
 ```blocks
 function nedtelling () {
@@ -152,7 +150,7 @@ Nå skal vi se på hvordan vi kan bruke en Kitronik OLED-skjerm for å bedre vis
 
 Skjermen skal kobles til mellom CanSat og micro:bit.
 
-![Kitronik OLED-skjerm](https://www.lekolar.no/globalassets/inriver/resources/133848_118895.jpg)
+![OLED_Kitronik_liten.jpg](https://i.postimg.cc/mD2ry8kJ/OLED_Kitronik_liten.jpg)
 
 
 <!-- Del 3.1: -->
@@ -173,17 +171,18 @@ kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Big)
 
 ## Oppgave 3: Vise nedtelling på OLED-skjermen
 
-Fjern ``||basic: vis tall||`` ``||variables: teller||`` fra ``||functions: nedtelling||``. 
+Fjern blokken ``||basic: vis tall||`` ``||variables: teller||`` fra  funksjonen ``||functions: nedtelling||``. 
 
-Sett istedet inn ``||kitronik_VIEW128x64: clear display||`` og ``||kitronik_VIEW128x64: show||`` ``||variables: teller||`` ``||kitronik_VIEW128x64: on line 1||``.
+For å vise noe på skjermen, bruk blokken ``||kitronik_VIEW128x64: show ||``. Trykk på pluss(+) for å utvide blokken. Sett linjevalg til 1.
 
-Last ned koden for å teste!
+Inni ``||kitronik_VIEW128x64: show||``, vis ``||variables: teller||`` ``||kitronik_VIEW128x64: on line 1||``.
+
+For å sørge for at skjermen alltid viser riktig verdi, må vi hele tiden oppdatere OLED-skjermen. Vi må derfor plassere``||kitronik_VIEW128x64: refresh display||`` inni ``||basic: gjenta for alltid||``.
 
 ```blocks
 function nedtelling () {
     teller = 10
     for (let indeks = 0; indeks <= 10; indeks++) {
-        kitronik_VIEW128x64.clear()
         kitronik_VIEW128x64.show(teller, 1)
         teller += -1
         basic.pause(1000)
@@ -199,6 +198,11 @@ let teller = 0
 kitronik_VIEW128x64.controlDisplayOnOff(kitronik_VIEW128x64.onOff(true))
 kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Big)
 nedtelling()
+basic.forever(function () {
+	kitronik_VIEW128x64.refresh()
+})
+
+
 ```
 
 
@@ -206,7 +210,9 @@ nedtelling()
 
 ## Oppgave 4: Lage et voltmeter @unplugged
 
-Alle sensorene vi skal koble til CanSat'en bruker spenningsverdien vi får fra sensoren for å regne ut den faktiske verdien vår. Vi må derfor lære hvordan man konverterer den analog verdi vi får inn på micro:biten til en spenningsverdien.
+Alle sensorene vi skal koble til CanSat'en, gir oss en analog verdi. Denne verdien må vi først regne om til en spenningsverdi, og så videre til den faktiske verdien vi kan bruke. 
+
+Vi må derfor lære hvordan man konverterer den analoge verdien vi får inn på micro:biten til en spenningsverdi.
 
 
 <!-- Del 4.1: -->
@@ -229,13 +235,14 @@ function voltmeter () {
 
 Inni funksjonen ``||functions: voltmeter||`` skal vi vise den analoge verdien vi får fra P0. 
 
-Start med å fjerne alt på skjermen med ``||kitronik_VIEW128x64: clear display||``. For å vise noe på skjermen, bruk blokken ``||kitronik_VIEW128x64: show ||``. Trykk på pluss(+) for å utvide blokken. Sett linjevalg til 1.
+For å vise noe på skjermen, bruk blokken ``||kitronik_VIEW128x64: show ||``. Trykk på pluss(+) for å utvide blokken. Sett linjevalg til 1.
 
 For å kunne vise både tekst og en variabel på samme linje, må vi hente ``||text: sett sammen ||`` fra biblioteket ``||text: Tekst ||``. Sett blokken inni ``||kitronik_VIEW128x64: show ||``.
 
 I den første ruta til ``||text: sett sammen ||``, skriv "Analog: ". I den andre ruta, sette inn variabelen ``||variables: analogVerdi||``.
 
-Til slutt skal vi oppdatere verdien som leses til hver 500ms: Bruk en ``||basic: pause||`` for å gjøre dette.
+For å få programmet vårt til å kjøre funksjonen vi har laget, må vi legge inn blokken ``||functions: kjør voltmeter||`` inne fra ``||basic: gjenta for alltid||``. Gjør det samme for alle funksjonene du skal lage, hvis ikke annet er oppgitt. 
+
 
 ```blocks
 let analogVerdi = 0
@@ -243,7 +250,6 @@ function voltmeter () {
     analogVerdi = pins.analogReadPin(AnalogPin.P0)
     kitronik_VIEW128x64.clear()
     kitronik_VIEW128x64.show("Analog: " + analogVerdi, 1)
-    basic.pause(500)
 ```
 
 
@@ -257,9 +263,9 @@ Lage en ny variabel: ``||variables: Uref||``.
 
 Se tabell under for hva ``||variables: Uref||`` skal være :
 
-|   **  Spenning fra USB  **   |   **  Spenning fra batteri  **   |
-| :------------: | :------------: |
-| 3.2 | 3.0 |
+|   **  Spenning fra USB  **   | |   **  Spenning fra batteri  **   |
+| :------------: | | :------------: |
+| 3.2 | | 3.0 |
 
 ```blocks
 let Uref = 0
@@ -271,9 +277,12 @@ Uref = 3.2
 
 ## Oppgave 4: Beregne spenning fra analog verdi
 
-Lage en ny variabel: ``||variables: spenning||``.
+Vi har nå fått en analog verdi vi kan bruke for å regne ut spenningen over sensoren. For å gjøre dette, lage en ny variabel: ``||variables: spenning||``.
 
-Bruk denne formelen  for å sette ``||variables: spenning||`` til ( ``||variables: analogverdi||`` / 1024 ) * ``||variables: Uref||``
+Bruk denne formelen for å sette ``||variables: spenning||`` til ( ``||variables: analogverdi||`` / 1024 ) * ``||variables: Uref||``.
+
+
+![Formel_spenning_fra_analogverdi_liten.png](https://i.postimg.cc/YSn2XtQv/Formel_spenning_fra_analogverdi_liten.png)
 
 ```blocks
 function voltmeter () {
@@ -319,16 +328,16 @@ kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Normal)
 
 ## Oppgave 4: Runde av spenningsverdi
 
-Når du testet koden din, så du kanskje at du fikk veldig mange desimaler. Vi kan ikke direkte skrive at vi kun ønsker 2 desimaler. Det vi må gjøre er å gange verdien vi har fått med 100, ``||math: avrund ||`` den nye verdien vår, før vi deler den på 100. Endre ``||math: avrund ||`` til ``||math: avkorte ||``.
+Når du testet koden din, så du kanskje at det ble mange desimaler. Vi har ingen blokk som lar oss direkte avrunde til 2 desimaler. Derfor må vi multiplisere verdien vi har fått med 100, og deretter ``||math: avrund ||`` ``||variables: spenning||``. Det gir oss et heltall som er 100 ganger for stort. Hvis vi nå deler det nye tallet vårt på 100, vil vi få riktig tall, og ha flyttet kommategnet 2 plasser oppover slik at vi får en verdi med 2 desimaler.
 
-Vi skal endre utregningen for variabelen ``||variables: spenning ||``. Formelen blir seende slik ut vi setter ``||variables: spenning ||`` til ``||math: avkorte||`` ( ``||variables: analogVerdi||`` ``||math: / ||`` 1024 ``||math: *||`` ``||variables: Uref ||`` ``||math: *||`` 100 ) ``||math: / ||`` 100
+Vi skal endre utregningen for variabelen ``||variables: spenning ||``. Formelen blir seende slik ut vi setter ``||variables: spenning ||`` til ``||math: avrund||`` ( ``||variables: analogVerdi||`` ``||math: / ||`` 1024 ``||math: *||`` ``||variables: Uref ||`` ``||math: *||`` 100 ) ``||math: / ||`` 100
 
 ```blocks
 let spenning = 0
 let analogVerdi = 0
 function voltmeter () {
     analogVerdi = pins.analogReadPin(AnalogPin.P0)
-    spenning = Math.trunc(analogVerdi / 1024 * Uref * 100) / 100
+    spenning = Math.round(analogVerdi / 1024 * Uref * 100) / 100
     kitronik_VIEW128x64.clear()
     kitronik_VIEW128x64.show("Analog: " + analogVerdi, 1)
     kitronik_VIEW128x64.show("Spenning: " + spenning + " V", 2)
@@ -345,7 +354,7 @@ I denne oppgaven skal vi finne temperaturen fra en TMP36 temperatursensor.
 
 Koble opp kretsen på bildet under:
 
-![Oppgave-5-TMP36-Oppkobling.png](https://i.postimg.cc/g2RTLYvL/Oppgave-5-TMP36-Oppkobling.png)
+![Oppgave_5_TMP36_Oppkobling_liten.png](https://i.postimg.cc/Jh67TRjX/Oppgave_5_TMP36_Oppkobling_liten.png)
 
 
 <!-- Del 5.1: -->
@@ -356,7 +365,7 @@ Vi skal lage en ny funksjon: ``||functions: termometer||``.
 
 Inne ``||functions: termometer||``, lage en ny variabel: ``||variables: temperatur||``.
 
-Bruk denne formelen for å sette ``||variables: temperatur||`` til ( ``||variables: spenning||`` ``||math: -||`` 0.5 ) ``||math: /||`` 0.01
+Bruk denne formelen for å sette ``||variables: temperatur||`` til ( ``||variables: spenning||`` - 0.5 ) / 0.01
 
 ```blocks
 function termometer () {
@@ -413,16 +422,16 @@ For å lage et barometer skal vi bruke ``||BMP280: trykk||``.
 
 <!-- Del 6.1: -->
 
-## Oppgave 6: Koble opp og lese av fra BMP280
+## Oppgave 6: Koble opp og lese av fra BME280
 
-For å få BMP280 til å snakke med CanSat, skal vi sette opp to blokken inn i ``||basic: ved start||`` fra biblioteket ``||BMP280: BMP280||``:
+For å få BME280 til å snakke med CanSat, skal vi sette opp to blokken inn i ``||basic: ved start||`` fra biblioteket ``||BMP280: BMP280||``:
 
-- ``||BMP280: Power On||``
-- ``||BMP280: set address 0x76||``
+- ``||BME280: Power On||``
+- ``||BME280: set address 0x76||``
 
 Videre, lage en ny funksjon: ``||functions: BMP280_sensor||``.
 
-Inne ``||functions: BMP280_sensor||``, sett opp en ny variabel: ``||variables: trykk||``. Sett ``||variables: trykk||`` til ``||BMP280: pressure||``.
+Inne ``||functions: BME280_sensor||``, sett opp en ny variabel: ``||variables: trykk||``. Sett ``||variables: trykk||`` til ``||BME280: pressure||`` (fra biblioteket BME280).
 
 ```blocks
 Uref = 3.2
@@ -430,7 +439,7 @@ kitronik_VIEW128x64.controlDisplayOnOff(kitronik_VIEW128x64.onOff(true))
 kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Normal)
 BME280.PowerOn()
 BME280.Address(BME280_I2C_ADDRESS.ADDR_0x76)
-function BMP280_sensor () {
+function BME280_sensor () {
     trykk = BME280.pressure(BME280_P.Pa)
 }
 ```
@@ -459,7 +468,7 @@ function barometer () {
 
 ## Oppgave 7: Formel for å regne om barometrisk lufttrykk til relativ høyde på CanSat @unplugged
 
-![Regne-ut-hoyde-i-forhold-til-trykk.png](https://i.postimg.cc/Lst1zpZS/Regne-ut-hoyde-i-forhold-til-trykk.png)
+![Regne-ut-hoyde-i-forhold-til-trykk-liten-200.png](https://i.postimg.cc/6pygnRB4/Regne-ut-hoyde-i-forhold-til-trykk-liten-200.png)
 
 Hvor:
 - **h:**  Beregnet høyde i meter
@@ -478,7 +487,9 @@ Hvor:
 
 Vi skal lage en ny funksjon: ``||functions: høyde||``. Plasser den eneste blokken fra blokken fra ``||barometric-height: Høydeberegning||``.
 
-Plasser ``||variabel: trykk||`` inn i P. Sjekk også at alle verdiene i blokken er riktige!
+- Plasser variabelen ``||variabel: trykk||`` inn for P. 
+- Endre P1 til trykket du leser av når micro:bit ligger på gulvet.
+- Endre T1 til temperaturen du leser av når micro:bit ligger på gulvet.
 
 ```blocks
 function høyde () {
